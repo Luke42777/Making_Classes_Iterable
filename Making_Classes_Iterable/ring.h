@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <initializer_list>
 
 using namespace std;
 
@@ -19,12 +20,23 @@ public:
 		buffer_size = elements;
 		ptr_values = new T[buffer_size];
 	}
-	//************************
+	//*****************************************************
+	ring(initializer_list<int> numbers,int elements) :position(0)
+	{
+		buffer_size = elements;
+		ptr_values = new T[buffer_size];
+		
+		initializer_list<int>::iterator it = numbers.begin();
+		for (int i = 0; i < elements;i++,it++)
+		{
+		*(ptr_values + i) = *it;
+		}
+	}
 	~ring()
 	{
 		delete[]ptr_values;
 	}
-	//****************************
+	//****************************************************
 	void add(T t)
 	{
 		*(ptr_values + position) = t; //

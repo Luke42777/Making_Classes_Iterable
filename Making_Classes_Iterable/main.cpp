@@ -31,4 +31,13 @@ int main()
 	{
 		cout << value << endl;
 	}
+
+	ring<int> storage({1,2,3,4,4,5},3);
+	storage.add(90);
+	storage.add(90);
+
+	
+	for (int i = 0; i < storage.size(); i++) {
+		cout << storage.get(i) << endl;
+	}
 }
